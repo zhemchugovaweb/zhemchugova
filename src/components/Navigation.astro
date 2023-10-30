@@ -1,0 +1,47 @@
+<nav
+  class="px-6 py-3 text-white font-medium font-mont rounded-[60px] bg-[#32504C80] bg-opacity-50 sticky bottom-11 w-fit mx-auto"
+>
+  <ul class="flex items-center gap-5">
+    <li>
+      <a href="#certificates">Сертификаты</a>
+    </li>
+    <li>
+      <a href="#photos">Фото</a>
+    </li>
+    <li>
+      <a href="#contacts">Контакты</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .active {
+    color: #ceba9b;
+  }
+</style>
+
+<script>
+  const main = document.querySelector("main");
+  const sections = document.querySelectorAll("section");
+  const navLi = document.querySelectorAll("nav ul li a");
+
+  if (main)
+    main.addEventListener("scroll", (e) => {
+      let pos = main.scrollTop;
+      for (let i = 0, l = sections.length; i < l; i++) {
+        let relativePos =
+          sections[i].offsetTop - pos + sections[i].offsetHeight / 2;
+        if (relativePos >= 0 && relativePos < sections[i].offsetHeight) {
+          const currentSectionId = sections[i].getAttribute("id");
+          navLi.forEach((li) => {
+            li.classList.remove("active");
+            document
+              .querySelector(`a[href='#${currentSectionId}']`)
+              ?.classList.add("active");
+          });
+
+          break;
+        }
+      }
+    });
+</script>
