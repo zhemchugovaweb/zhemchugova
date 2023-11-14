@@ -15,7 +15,7 @@
     "@fontsource-variable/montserrat": "^5.0.16",
     "@fontsource/bona-nova": "^5.0.8",
     "@fontsource/montserrat": "^5.0.15",
-    "astro": "^3.4.0",
+    "astro": "^3.5.3",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
   },

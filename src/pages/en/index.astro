@@ -1,21 +1,21 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import background from "../assets/main-desk.webp";
-import background_mob from "../assets/main-mob.webp";
+import background from "../../assets/main-desk.webp";
+import background_mob from "../../assets/main-mob.webp";
 
-import Section from "../components/Section.astro";
-import Container from "../components/Container.astro";
+import Section from "../../components/Section.astro";
+import Container from "../../components/Container.astro";
 
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const photos = await Astro.glob("../assets/photos/*.webp").then((files) => {
+const photos = await Astro.glob("../../assets/photos/*.webp").then((files) => {
   return files.map((file) => file.default);
 });
-const certs = await Astro.glob("../assets/certs/*.webp").then((files) => {
+const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
   return files.map((file) => file.default);
 });
 ---
