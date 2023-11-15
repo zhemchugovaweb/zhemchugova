@@ -8,6 +8,7 @@ import Section from "../components/Section.astro";
 import Container from "../components/Container.astro";
 
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { ImageModal } from "../components/ImageModal";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -20,7 +21,7 @@ const certs = await Astro.glob("../assets/certs/*.webp").then((files) => {
 });
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={t("hero.title")}>
   <Section id="hero" class="flex-col z-10">
     <Container class="flex-col justify-center z-10">
       <div class="mt-auto md:my-auto">
@@ -30,13 +31,13 @@ const certs = await Astro.glob("../assets/certs/*.webp").then((files) => {
           {t("hero.title")}
         </h1>
         <p
-          class="text-base md:text-[1.2vw] font-light mt-2 text-[#E5E7EB] md:text-[#142322]"
+          class="text-base md:text-[1.05vw] leading-tight font-light mt-2 text-[#E5E7EB] md:text-[#142322]"
         >
           {t("hero.subtitle")}
         </p>
       </div>
       <p
-        class="text-sm md:text-[1vw] font-light italic mb-6 mt-8 md:mb-24 text-[#E5E7EB] md:text-[#142322] whitespace-pre"
+        class="text-sm md:text-[0.85vw] leading-tight font-light italic mb-6 mt-8 md:mb-24 text-[#E5E7EB] md:text-[#142322] whitespace-pre"
       >
         {t("hero.register")}
       </p>
@@ -56,35 +57,39 @@ const certs = await Astro.glob("../assets/certs/*.webp").then((files) => {
   </Section>
   <Section id="certificates" class="flex-col bg-[#142322]">
     <Container class="items-center relative">
-      <ul
-        class="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory md:flex-wrap md:justify-center"
-      >
+      <ul class="flex gap-4 md:gap-8 flex-wrap md:justify-center">
         {
           certs.map((cert, i) => (
-            <Image
-              src={cert}
-              alt="Certificate"
-              quality={100}
-              class="snap-start md:flex-1 md:w-[20%]"
-            />
+            <ImageModal
+              client:load
+              className="w-[calc(50%-8px)] md:flex-auto md:w-[20%]"
+            >
+              <Image src={cert} alt="Certificate" quality={100} />
+            </ImageModal>
           ))
         }
       </ul>
     </Container>
   </Section>
   <Section id="photos" class="flex-col bg-[#1B2D2B]">
-    <Container class="items-center relative">
+    <Container class="md:items-center relative px-0 md:px-[5%] items-start">
       <ul
-        class="flex gap-4 overflow-x-auto snap-x snap-mandatory md:flex-wrap md:gap-0 md:justify-center"
+        class="flex md:gap-[1px] h-[80vh] md:h-auto flex-wrap md:justify-center"
       >
         {
           photos.map((photo, i) => (
-            <Image
+            <ImageModal
+              client:load
+              className="w-[calc(50%)] max-h-40 md:max-h-64 md:flex-auto md:w-[15%]"
               src={photo}
-              alt="Alena Zhemchugova"
-              quality={100}
-              class="snap-start md:flex-1 max-h-56 md:w-[20%]"
-            />
+            >
+              <Image
+                src={photo}
+                alt="Photos from conferences"
+                quality={100}
+                class="max-h-[80vh] h-full object-cover object-left-top"
+              />
+            </ImageModal>
           ))
         }
       </ul>
@@ -92,7 +97,7 @@ const certs = await Astro.glob("../assets/certs/*.webp").then((files) => {
   </Section>
   <Section id="contacts" class="flex-col bg-[#142322]">
     <Container
-      class="flex-col relative justify-center md:max-w-[40%] mx-auto px-0"
+      class="flex-col relative justify-center md:max-w-[40%] mx-auto md:px-0"
     >
       <h2 class="text-4xl md:text-[2vw] text-white mb-5 font-nova">
         {t(`contacts.title`)}

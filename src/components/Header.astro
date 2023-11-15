@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/logo.svg";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -10,16 +8,14 @@ const t = useTranslations(lang);
 <header
   class="absolute flex justify-between items-center px-5 md:px-[5%] md:top-12 w-full bg-transparent z-50 mix-blend-difference"
 >
-  <Image
-    src={logo}
+  <img
+    src="/logo.svg"
     alt="Alena Zhemchugova"
     class="h-14 w-14 md:h-[4vw] md:w-[4vw] mix-blend-difference z-50"
-    quality={100}
   />
-
   <a
     href={lang === "ru" ? "/en" : "/"}
-    class="md:text-[1vw] font-nova text-right font-medium mix-blend-difference text-[#CBBA9E]"
+    class="md:text-[0.95vw] font-nova text-right font-medium mix-blend-difference text-[#CBBA9E]"
     >{t("nav.lang")}</a
   >
 </header>
