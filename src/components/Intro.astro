@@ -1,0 +1,45 @@
+<section
+  id="intro"
+  class=`absolute top-0 left-0 w-full h-screen flex items-center justify-center`
+>
+  <img
+    src="/logo.svg"
+    alt="Alena Zhemchugova"
+    class="h-[200px] w-[200px] mix-blend-difference"
+  />
+</section>
+
+<style>
+  @keyframes logo {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 100;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes intro {
+    from {
+      display: flex;
+      opacity: 100;
+    }
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
+  #intro {
+    z-index: 50;
+    background-color: #142322;
+    animation-name: intro;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+  img {
+    animation-name: logo;
+    animation-duration: 2s;
+  }
+</style>
