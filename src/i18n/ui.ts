@@ -18,6 +18,9 @@ export const ui = {
     "contacts.phone": "Телефон",
     "contacts.textInput": "Сообщение или вопрос",
     "contacts.button": "Отправить",
+    "meta.title": "Алёна Жемчугова | Адвокат по налоговому праву",
+    "meta.description":
+      "Адвокатская палата города Москвы. Регистрационный номер 77/9959.",
   },
   en: {
     "nav.lang": "Рус",
@@ -31,5 +34,7 @@ export const ui = {
     "contacts.phone": "Phone number",
     "contacts.textInput": "Your message or question",
     "contacts.button": "Send",
+    "meta.title": "Alena Zhemchugova | Lawyer",
+    "meta.description": "Moscow Bar Association. Registration number 77/9959.",
   },
 } as const;

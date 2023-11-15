@@ -3,13 +3,14 @@ import { ImageModal } from "../../components/ImageModal";
 import Layout from "../../layouts/Layout.astro";
 
 import { Image } from "astro:assets";
-import background from "../../assets/main-desk.webp";
+import background from "../../assets/main-desk-big.webp";
 import background_mob from "../../assets/main-mob.webp";
 
 import Section from "../../components/Section.astro";
 import Container from "../../components/Container.astro";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import ContactForm from "../../components/ContactForm.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -22,7 +23,7 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
 });
 ---
 
-<Layout title={t("hero.title")}>
+<Layout title={t("meta.title")} description={t("meta.description")}>
   <Section id="hero" class="flex-col z-10">
     <Container class="flex-col justify-center z-10">
       <div class="mt-auto md:my-auto">
@@ -47,13 +48,13 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
       src={background}
       alt="Alena Zhemchugova"
       class="hidden md:block md:absolute top-0 left-0 h-full w-full object-cover z-0"
-      quality={100}
+      quality="max"
     />
     <Image
       src={background_mob}
       alt="Alena Zhemchugova"
       class="md:hidden absolute top-0 left-0 h-full w-full object-cover z-0"
-      quality={100}
+      quality="max"
     />
   </Section>
   <Section id="certificates" class="flex-col bg-[#142322]">
@@ -88,7 +89,7 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
                 src={photo}
                 alt="Photos from conferences"
                 quality={100}
-                class="max-h-[80vh] h-full object-cover object-left-top"
+                class="max-h-[80vh] h-full object-cover object-top"
               />
             </ImageModal>
           ))
@@ -98,31 +99,12 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
   </Section>
   <Section id="contacts" class="flex-col bg-[#142322]">
     <Container
-      class="flex-col relative justify-center md:max-w-[40%] mx-auto md:px-0"
+      class="flex-col relative justify-center md:w-[560px] mx-auto md:px-0"
     >
       <h2 class="text-4xl md:text-[2vw] text-white mb-5 font-nova">
         {t(`contacts.title`)}
       </h2>
-      <form class="flex flex-col w-full py-5 gap-5">
-        <input
-          type="tel"
-          class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
-          placeholder={t("contacts.phone")}
-        />
-        <input
-          type="email"
-          class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
-          placeholder="Email"
-        />
-        <textarea
-          class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none h-24"
-          placeholder={t("contacts.textInput")}></textarea>
-      </form>
-      <button
-        type="submit"
-        class="bg-[#D1BE9F] md:text-[1vw] rounded-lg py-5 font-medium"
-        >{t("contacts.button")}</button
-      >
+      <ContactForm />
     </Container>
   </Section>
 </Layout>

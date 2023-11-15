@@ -1,0 +1,70 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<form id="contact-form" class="flex flex-col w-full py-5 gap-5">
+  <input
+    type="tel"
+    name="tel"
+    class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
+    placeholder={t("contacts.phone")}
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
+    placeholder="Email"
+    required
+  />
+  <textarea
+    name="message"
+    class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none h-24"
+    placeholder={t("contacts.textInput")}
+    required></textarea>
+  <button
+    id="button"
+    type="submit"
+    class="bg-[#D1BE9F] md:text-[1vw] rounded-lg py-5 font-medium"
+    >{t("contacts.button")}</button
+  >
+</form>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script type="text/javascript">
+  (function () {
+    // https://dashboard.emailjs.com/admin/account
+    emailjs.init("wvOydf-88TLLG9mSa");
+  })();
+</script>
+<script type="text/javascript">
+  const btn = document.getElementById("button");
+
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      btn.innerText = "Отправялем...";
+
+      const serviceID = "service_gf5ffgd";
+      const templateID = "template_ogrz5ld";
+
+      emailjs.sendForm(serviceID, templateID, this).then(
+        () => {
+          btn.innerText = "Готов! Ваше сообщение отправлено.";
+          console.log("Sent!");
+        },
+        (err) => {
+          btn.innerText = "Произошла ошибка. Попробуйте еще раз.";
+          console.log(JSON.stringify(err));
+        },
+      );
+    });
+</script>
