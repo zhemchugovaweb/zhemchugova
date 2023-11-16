@@ -45,17 +45,15 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
         {t("hero.register")}
       </p>
     </Container>
-    <Image
-      src={background}
+    <img
+      src="/main-desk-big.webp"
       alt="Alena Zhemchugova"
       class="hidden md:block md:absolute top-0 left-0 h-full w-full object-cover z-0"
-      quality="max"
     />
-    <Image
-      src={background_mob}
+    <img
+      src="/main-mob.jpg"
       alt="Alena Zhemchugova"
       class="md:hidden absolute top-0 left-0 h-full w-full object-cover z-0"
-      quality="max"
     />
   </Section>
   <Section id="certificates" class="flex-col bg-[#142322]">
@@ -77,20 +75,16 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
   <Section id="photos" class="flex-col bg-[#1B2D2B]">
     <Container class="relative px-0 md:px-[5%] items-center">
       <ul
-        class="flex md:gap-[1px] h-[calc(100svh-68px-56px)] md:h-auto flex-wrap md:justify-center"
+        class="grid grid-cols-2 md:grid-cols-5 md:gap-[1px] h-[calc(100svh-68px-56px)] md:h-auto"
       >
         {
           photos.map((photo, i) => (
-            <ImageModal
-              client:load
-              className="w-[calc(50%)] max-h-[20%] md:max-h-64 md:flex-auto md:w-[15%]"
-              src={photo}
-            >
+            <ImageModal client:load src={photo}>
               <Image
                 src={photo}
                 alt="Photos from conferences"
                 quality={100}
-                class="h-full object-cover object-top"
+                class="h-full object-cover object-center"
               />
             </ImageModal>
           ))

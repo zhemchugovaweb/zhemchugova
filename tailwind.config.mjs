@@ -21,6 +21,9 @@ module.exports = {
         nova: ["Bona Nova"],
         mont: ["Montserrat Variable"],
       },
+      screens: {
+        md: "768px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
