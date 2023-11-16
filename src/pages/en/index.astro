@@ -60,7 +60,9 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
   </Section>
   <Section id="certificates" class="flex-col bg-[#142322]">
     <Container class="items-center relative">
-      <ul class="flex gap-4 md:gap-8 flex-wrap md:justify-center">
+      <ul
+        class="flex gap-4 h-[70svh] md:h-auto md:gap-8 flex-wrap md:justify-center"
+      >
         {
           certs.map((cert, i) => (
             <ImageModal
@@ -77,7 +79,7 @@ const certs = await Astro.glob("../../assets/certs/*.webp").then((files) => {
   <Section id="photos" class="flex-col bg-[#1B2D2B]">
     <Container class="relative px-0 md:px-[5%] items-center">
       <ul
-        class="flex md:gap-[1px] h-[80svh] md:h-auto flex-wrap md:justify-center"
+        class="flex md:gap-[1px] h-[70svh] md:h-auto flex-wrap md:justify-center"
       >
         {
           photos.map((photo, i) => (
