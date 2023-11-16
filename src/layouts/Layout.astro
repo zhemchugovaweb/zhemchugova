@@ -4,6 +4,7 @@ import "@fontsource-variable/montserrat";
 import "../styles/globals.css";
 import Header from "../components/Header.astro";
 import Navigation from "../components/Navigation.astro";
+import Intro from "../components/Intro.astro";
 interface Props {
   title: string;
   description: string;
@@ -32,8 +33,9 @@ const { title, description } = Astro.props;
   <body class="font-mont text-[#142322]">
     <Header />
     <main
-      class="w-full h-[100svh] overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+      class="relative w-full h-[100svh] overflow-y-scroll snap-y snap-mandatory scroll-smooth"
     >
+      <Intro />
       <slot />
       <Navigation />
     </main>
