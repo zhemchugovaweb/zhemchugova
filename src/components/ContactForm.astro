@@ -11,20 +11,18 @@ const t = useTranslations(lang);
     name="tel"
     class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
     placeholder={t("contacts.phone")}
-    required
   />
   <input
     type="email"
     name="email"
     class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none"
-    placeholder="Email"
+    placeholder="Email *"
     required
   />
   <textarea
     name="message"
     class="md:text-[1vw] p-5 bg-transparent border border-[#746349] text-[#D1BE9F] rounded-lg leading-none h-24"
-    placeholder={t("contacts.textInput")}
-    required></textarea>
+    placeholder={t("contacts.textInput")}></textarea>
   <button
     id="button"
     type="submit"
