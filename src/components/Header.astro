@@ -1,29 +1,25 @@
 ---
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import gb from "../assets/gb.svg";
-import ru from "../assets/ru.svg";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <header
-  class="absolute flex justify-between items-center px-5 md:px-10 md:top-12 w-full bg-transparent z-50 mix-blend-difference"
+  class="absolute flex justify-between items-center px-5 md:px-[5%] md:top-12 w-full bg-transparent z-50 mix-blend-difference"
 >
   <img
     src="/logo.svg"
     alt="Alena Zhemchugova"
-    class="h-14 w-14 md:h-20 md:w-20 z-50"
+    class="h-14 w-14 md:h-[4.2vw] md:w-[4.2vw] z-50"
   />
   <a href={lang === "ru" ? "/en" : "/"} class="flex items-center">
-    <span class="font-nova text-right font-medium text-[#CBBA9E]">
+    <Icon name="globe" class="h-4 md:h-[0.95vw] mr-1 text-[#CBBA9E]" />
+    <span
+      class="md:text-[0.95vw] font-nova text-right font-medium text-[#CBBA9E]"
+    >
       {t("nav.lang")}</span
     >
   </a>
 </header>
-<Image
-  alt="Flag"
-  src={lang === "ru" ? gb : ru}
-  class="w-3 md:w-4 h-auto mr-1 z-50 absolute top-[23px] right-12 md:top-[82px] md:right-[70px]"
-/>
