@@ -9,17 +9,15 @@ const t = useTranslations(lang);
 ---
 
 <header
-  class="absolute flex justify-between items-center px-5 md:px-[5%] md:top-12 w-full bg-transparent z-50 mix-blend-difference"
+  class="absolute flex justify-between items-center px-5 md:px-10 md:top-12 w-full bg-transparent z-50 mix-blend-difference"
 >
   <img
     src="/logo.svg"
     alt="Alena Zhemchugova"
-    class="h-14 w-14 md:h-[4.2vw] md:w-[4.2vw] z-50"
+    class="h-14 w-14 md:h-20 md:w-20 z-50"
   />
   <a href={lang === "ru" ? "/en" : "/"} class="flex items-center">
-    <span
-      class="md:text-[0.95vw] font-nova text-right font-medium text-[#CBBA9E]"
-    >
+    <span class="font-nova text-right font-medium text-[#CBBA9E]">
       {t("nav.lang")}</span
     >
   </a>
@@ -27,5 +25,5 @@ const t = useTranslations(lang);
 <Image
   alt="Flag"
   src={lang === "ru" ? gb : ru}
-  class="w-3 md:w-[0.95vw] h-auto mr-1 z-50 absolute top-[23px] right-12 md:top-[77px] md:right-28"
+  class="w-3 md:w-4 h-auto mr-1 z-50 absolute top-[23px] right-12 md:top-[82px] md:right-[70px]"
 />
